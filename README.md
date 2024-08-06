@@ -9,7 +9,7 @@ This repository contains the implementation of an image classification model usi
 - [Training Pipeline](#training-pipeline)
 - [Saving the Model](#saving-the-model)
 - [Plotting Metrics](#plotting-metrics)
-- [License](#license)
+<!-- - [License](#license) -->
 
 
 # Data Preprocessing
@@ -378,7 +378,7 @@ model_scripted.save('modelscripted.pt')
 
 Visualizing training metrics such as accuracy and loss can help you understand the model's performance over epochs.
 
-### 1. Plot Accuracy
+## 1. Plot Accuracy
 
 To plot the accuracy over epochs, use the following code:
 
@@ -395,3 +395,19 @@ def plot_accuracies(history):
     plt.savefig('AccuracyVsEpoch.png')
 ```
 [AccuracyVsEpoch](https://github.com/srijangyawali04/25-Bird-Image-Classification/blob/main/Results/AccuracyVsEpoch.png)
+
+## 2. Plot Loss
+```python 
+def plot_losses(history):
+    train_losses = [x.get('train_loss') for x in history]
+    val_losses = [x['val_loss'] for x in history]
+    plt.plot(train_losses, '-b')
+    plt.plot(val_losses, '-r')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.legend(['Training', 'Validation'])
+    plt.title('Loss vs. Number of Epochs')
+    plt.savefig('LossVsEpoch.png')
+```
+
+[LossVsEpoch](https://github.com/srijangyawali04/25-Bird-Image-Classification/blob/main/Results/LossVsEpoch.png)
