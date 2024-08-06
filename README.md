@@ -17,28 +17,28 @@ This repository contains the implementation of an image classification model usi
 This document describes the steps required to prepare your dataset for training and validation.
 
 ## 1. Dataset Structure
-The Seen dataset was provided in the structure as below:
-Seen Datasets/
-├── train/
-│   ├── Common-Kingfisher/
-│   │   ├── Common-Kingfisher_2.jpg
-│   │   ├── Common-Kingfisher_3.jpg
-│   │   └── ...
-│   ├── Cattle-Egret/
-│   │   ├── Cattle-Egret_1.jpg
-│   │   ├── Cattle-Egret_3.jpg
-│   │   └── ...
-│   └── ...
-└── val/
-    ├── Common-Kingfisher/
-    │   ├── Common-Kingfisher_1.jpg
-    │   ├── Common-Kingfisher_4.jpg
-    │   └── ...
-    ├── Cattle-Egret/
-    │   ├── Common-Kingfisher_1.jpg
-    │   ├── Common-Kingfisher_16.jpg
-    │   └── ...
-    └── ...
+The Seen dataset was provided in the structure as below:\
+Seen Datasets/\
+├── train/\
+│   ├── Common-Kingfisher/\
+│   │   ├── Common-Kingfisher_2.jpg\
+│   │   ├── Common-Kingfisher_3.jpg\
+│   │   └── ...\
+│   ├── Cattle-Egret/\
+│   │   ├── Cattle-Egret_1.jpg\
+│   │   ├── Cattle-Egret_3.jpg\
+│   │   └── ...\
+│   └── ...\
+└── val/\
+    ├── Common-Kingfisher/\
+    │   ├── Common-Kingfisher_1.jpg\
+    │   ├── Common-Kingfisher_4.jpg\
+    │   └── ...\
+    ├── Cattle-Egret/\
+    │   ├── Common-Kingfisher_1.jpg\
+    │   ├── Common-Kingfisher_16.jpg\
+    │   └── ...\
+    └── ...\
 
 ## 2. Providing path for Train and Validation set
 ```python
