@@ -394,4 +394,4 @@ def plot_accuracies(history):
     plt.title('Accuracy vs. Number of Epochs')
     plt.savefig('AccuracyVsEpoch.png')
 ```
-[AccuracyVsEpoch](Results\\AccuracyVsEpoch.png)
+[AccuracyVsEpoch](https://github.com/srijangyawali04/25-Bird-Image-Classification/blob/main/Results/AccuracyVsEpoch.png)
