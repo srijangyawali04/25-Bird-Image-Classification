@@ -67,5 +67,5 @@ A DataLoader is created from the concatenated dataset to load the data in batche
 ```python
 dataset_dl = DataLoader(dataset, batch_size, shuffle=True)
 ```
-`batch_size`: Number of images to load in each batch.n\
+`batch_size`: Number of images to load in each batch.\
 `shuffle`: Whether to shuffle the dataset every epoch.
