@@ -264,7 +264,7 @@ class ImgClassifier(ImageClassificationBase):
 
 # Model Architecture
 ```python
-Input Layer
+Input Layer(3x416x416)
   |
 Sequential Block 1
   |-- Conv2d (3, 64, 3, 2, 1) [1,728]
