@@ -6,7 +6,7 @@ This repository contains the implementation of an image classification model usi
 
 - [Data Preparation](#data-preparation)
 - [Model Building](#model-building)
-- [Training Pipeline](#training-pipline)
+- [Training Pipeline](#training-pipeline)
 - [Saving the Model](#saving-the-model)
 - [Plotting Metrics](#plotting-metrics)
 - [License](#license)
@@ -260,6 +260,8 @@ class ImgClassifier(ImageClassificationBase):
             nn.Linear(1024, output_dim)
         )
 ```
+
+
 # Training Pipeline
 
 The training pipeline involves setting up the model training process, including early stopping to prevent overfitting, evaluating the model, and training it over multiple epochs. Below are the components and steps for the training process:
@@ -353,3 +355,43 @@ def modeltrain(epochs, lr, model, train_loader, val_loader,
 ```
 
 This pipeline handles the complete training process including setting up early stopping, evaluating the model performance, and managing the training loop. Adjust the parameters and hyperparameters as necessary for your specific use case.
+
+# Saving the Model
+
+After training the model, it's important to save it so that you can reload it later for inference or further training. The following steps outline how to save both the model's state and its scripted version.
+
+## 1. Save the Model State
+
+You can save the model's state dictionary, which contains all the parameters learned during training. This allows you to load the model later without retraining.
+
+```python
+torch.save(model, 'model.pth')
+```
+## 2. Save a Scripted Version
+
+```python
+model_scripted = torch.jit.script(model)
+model_scripted.save('modelscripted.pt')
+```
+
+# Plotting Metrics
+
+Visualizing training metrics such as accuracy and loss can help you understand the model's performance over epochs.
+
+### 1. Plot Accuracy
+
+To plot the accuracy over epochs, use the following code:
+
+```python
+def plot_accuracies(history):
+    train_accs = [x.get('train_acc') for x in history]
+    val_accs = [x['val_acc'] for x in history]
+    plt.plot(train_accs, '-b')
+    plt.plot(val_accs, '-r')
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy')
+    plt.legend(['Training', 'Validation'])
+    plt.title('Accuracy vs. Number of Epochs')
+    plt.savefig('AccuracyVsEpoch.png')
+```
+[AccuracyVsEpoch](Results\AccuracyVsEpoch.png)
