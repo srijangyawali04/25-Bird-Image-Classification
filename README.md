@@ -6,6 +6,7 @@ This repository contains the implementation of an image classification model usi
 
 - [Data Preparation](#data-preparation)
 - [Model Building](#model-building)
+- [Model Architecture](#model-architecture)
 - [Training Pipeline](#training-pipeline)
 - [Saving the Model](#saving-the-model)
 - [Plotting Metrics](#plotting-metrics)
@@ -260,6 +261,70 @@ class ImgClassifier(ImageClassificationBase):
             nn.Linear(1024, output_dim)
         )
 ```
+
+# Model Architecture
+
+Input Layer\
+  |\
+Sequential Block 1\
+  |-- Conv2d (3, 64, 3, 2, 1) [1,728]\
+  |-- BatchNorm2d (64) [128]\
+  |-- ReLU\
+  |-- SEBlock (64)\
+  |   |-- fc1 (64, 4) [256]\
+  |   |-- fc2 (4, 64) [256]\
+  |-- MaxPool2d (2)\
+  |\
+Sequential Block 2\
+  |-- Conv2d (64, 128, 3, 1, 1)\
+  |   |-- Depthwise (128, 128, 3) [1,152]\
+  |   |-- Pointwise (128, 128, 1) [16,384]\
+  |-- BatchNorm2d (128) [128]\
+  |-- ReLU\
+  |-- SEBlock (128)\
+  |   |-- fc1 (128, 8) [1,024]\
+  |   |-- fc2 (8, 128) [1,024]\
+  |-- MaxPool2d (2)\
+  |\
+Sequential Block 3\
+  |-- Conv2d (128, 256, 3, 1, 1)\
+  |   |-- Depthwise (256, 256, 3) [2,304]\
+  |   |-- Pointwise (256, 256, 1) [65,536]\
+  |-- BatchNorm2d (256) [256]\
+  |-- ReLU\
+  |-- SEBlock (256)\
+  |   |-- fc1 (256, 16) [4,096]\
+  |   |-- fc2 (16, 256) [4,096]\
+  |-- MaxPool2d (2)\
+  |\
+Sequential Block 4\
+  |-- Conv2d (256, 512, 3, 1, 1)\
+  |   |-- Depthwise (512, 512, 3) [4,608]\
+  |   |-- Pointwise (512, 512, 1) [262,144]\
+  |-- BatchNorm2d (512) [512]\
+  |-- ReLU\
+  |-- SEBlock (512)\
+  |   |-- fc1 (512, 32) [16,384]\
+  |   |-- fc2 (32, 512) [16,384]\
+  |-- MaxPool2d (2)\
+  |\
+Sequential Block 5\
+  |-- Conv2d (512, 512, 3, 1, 1)\
+  |   |-- Depthwise (512, 512, 3) [4,608]\
+  |   |-- Pointwise (512, 512, 1) [262,144]\
+  |-- BatchNorm2d (512) [512]\
+  |-- ReLU\
+  |-- SEBlock (512)\
+  |   |-- fc1 (512, 32) [16,384]\
+  |   |-- fc2 (32, 512) [16,384]\
+  |\
+Classifier\
+  |-- Linear (512, 512) [262,656]\
+  |-- BatchNorm1d (512) [1,024]\
+  |-- Linear (512, 1024) [525,312]\
+  |-- BatchNorm1d (1024) [2,048]\
+  |-- Linear (1024, 25) [25,625]\
+
 
 
 # Training Pipeline
