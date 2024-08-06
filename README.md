@@ -9,7 +9,7 @@ This repository contains the implementation of an image classification model usi
 - [Training Pipeline](#training-pipeline)
 - [Saving the Model](#saving-the-model)
 - [Plotting Metrics](#plotting-metrics)
-<!-- - [License](#license) -->
+<!-- - [License](#license) --> 
 
 
 # Data Preprocessing
