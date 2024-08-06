@@ -60,6 +60,7 @@ The training and validation datasets are concatenated into a single dataset usin
 ```python
 dataset = ConcatDataset([train_set, val_set])
 ```
+`ConcatDataset`: A utility from torch.utils.data that concatenates multiple datasets.
 
 ### 3. Create a DataLoader
 
@@ -69,3 +70,26 @@ dataset_dl = DataLoader(dataset, batch_size, shuffle=True)
 ```
 `batch_size`: Number of images to load in each batch.\
 `shuffle`: Whether to shuffle the dataset every epoch.
+
+### 4. Calculate Mean and Standard Deviation
+
+The get_mean_and_std function calculates the mean and standard deviation of the pixel values in the dataset. It iterates through the dataset, computes the sum and squared sum of the pixel values for each channel, and then calculates the mean and standard deviation.
+
+```python
+def get_mean_and_std(dataloader):
+    channels_sum, channels_squared_sum, num_batches = 0, 0, 0
+    for data, _ in tqdm(dataloader):
+        channels_sum += torch.mean(data, dim=[0, 2, 3])
+        channels_squared_sum += torch.mean(data**2, dim=[0, 2, 3])
+        num_batches += 1
+
+    mean = channels_sum / num_batches
+    std = (channels_squared_sum / num_batches - mean ** 2) ** 0.5
+    return mean, std
+```
+`dataloader`: DataLoader instance to load the dataset in batches.\
+`channels_sum`: Sum of the pixel values for each channel.\
+`channels_squared_sum`: Sum of the squared pixel values for each channel.\
+`num_batches`: Total number of batches processed.\
+`mean`: Calculated mean of the pixel values for each channel.\
+`std`: Calculated standard deviation of the pixel values for each channel.
