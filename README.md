@@ -557,7 +557,7 @@ def plot_accuracies(history):
     plt.title('Accuracy vs. Number of Epochs')
     plt.savefig('AccuracyVsEpoch.png')
 ```
-[AccuracyVsEpoch](https://github.com/srijangyawali04/25-Bird-Image-Classification/blob/main/Results/AccuracyVsEpoch.png)
+![AccuracyVsEpoch](https://github.com/user-attachments/assets/89ee1974-bb94-4745-9a70-acd3e87917b0)
 
 ## 2. Plot Loss
 ```python 
@@ -573,4 +573,4 @@ def plot_losses(history):
     plt.savefig('LossVsEpoch.png')
 ```
 
-[LossVsEpoch](https://github.com/srijangyawali04/25-Bird-Image-Classification/blob/main/Results/LossVsEpoch.png)
+![LossVsEpoch](https://github.com/user-attachments/assets/94129881-0506-4004-9f8a-f4a4f6dda103)
