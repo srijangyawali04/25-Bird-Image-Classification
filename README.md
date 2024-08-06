@@ -263,7 +263,7 @@ class ImgClassifier(ImageClassificationBase):
 ```
 
 # Model Architecture
-
+```PYTHON
 Input Layer\
   |\
 Sequential Block 1\
@@ -324,6 +324,11 @@ Classifier\
   |-- Linear (512, 1024) [525,312]\
   |-- BatchNorm1d (1024) [2,048]\
   |-- Linear (1024, 25) [25,625]\
+
+Total params: 3,472,793\
+Trainable params: 3,472,793\
+Non-trainable params: 0\
+```
 
 
 
